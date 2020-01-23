@@ -36,12 +36,21 @@ router.get('/:id', function(req, res, next) {
         json: true
       };
       request.get(options, function(error, response, body) {
-        var myDictAnswer = {track_name: [], url: []};
-        for (var i = 0; i < 3; i++) {
-            myDictAnswer.track_name.push(body.items[i].track.name);
-            myDictAnswer.url.push(body.items[i].track.external_urls.spotify);
-        }
-        res.json(myDictAnswer);
+        
+
+        
+          var myDictAnswer = {track_name: [], url: []};
+          for (var i = 0; i < 3; i++) {
+            if(!error && response.statusCode === 200){
+              myDictAnswer.track_name.push(body.items[i].track.name);
+              myDictAnswer.url.push(body.items[i].track.external_urls.spotify);
+            }
+            else {
+              myDictAnswer.track_name.push("NA");
+              myDictAnswer.url.push("NA");
+            }
+          }
+          res.json(myDictAnswer);
       });
     }
   });

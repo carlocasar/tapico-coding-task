@@ -41,8 +41,14 @@ router.get('/:id', function(req, res, next) {
             request.get(options, function(error, response, body) {
                 var myDictAnswer = {name: [], url: []};
                 for (var i = 0; i < 3; i++) {
+                  if(!error && response.statusCode === 200){
                     myDictAnswer.name.push(body[0].trends[i].name);
                     myDictAnswer.url.push(body[0].trends[i].url);
+                  }
+                  else{
+                    myDictAnswer.name.push("NA");
+                    myDictAnswer.url.push("NA");
+                  }
                 }
                 res.json(myDictAnswer);
             });

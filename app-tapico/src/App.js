@@ -91,13 +91,13 @@ class App extends Component {
               defaultValue={{ label: "Select country", value: 0 }}
             />
 
-            <b><img src={Spotifylogo} className="App-logo"></img>Trendiest songs in Spotify:</b>
+            <b><img src={Spotifylogo} className="App-logo" alt="Spotifylogo"></img>Trendiest songs in Spotify:</b>
             {this.createListSpotify()}
 
-            <b><img src={Twitterlogo} className="App-logo"></img>Trending topics in Twitter:</b>
+            <b><img src={Twitterlogo} className="App-logo" alt="Twitterlogo"></img>Trending topics in Twitter:</b>
             {this.createListTwitter()}
 
-            <b><img src={Youtubelogo} className="App-logo"></img>Trendiest videos in Youtube:</b>
+            <b><img src={Youtubelogo} className="App-logo" alt="Youtubelogo"></img>Trendiest videos in Youtube:</b>
             {this.createListYoutube()}
         </div>
     );

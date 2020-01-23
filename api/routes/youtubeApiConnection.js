@@ -20,8 +20,14 @@ router.get('/:id', function(req, res, next) {
     request.get(options, function(error, response, body) {
         var myDictAnswer = {name: [], url: []};
         for (var i = 0; i < 3; i++) {
-            myDictAnswer.name.push(body.items[i].snippet.title);
-            myDictAnswer.url.push(`https://www.youtube.com/watch?v=${body.items[i].id}`);
+            if(!error && response.statusCode === 200){
+                myDictAnswer.name.push(body.items[i].snippet.title);
+                myDictAnswer.url.push(`https://www.youtube.com/watch?v=${body.items[i].id}`);
+            }
+            else {
+                myDictAnswer.name.push("NA");
+                myDictAnswer.url.push("NA");
+            }
         }
         res.json(myDictAnswer);
     });
